@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.androidLibrary)
+    id("co.touchlab.skie") version "0.6.4"
 }
 
 kotlin {
@@ -11,7 +12,7 @@ kotlin {
             }
         }
     }
-    
+    task("testClasses")
     listOf(
         iosX64(),
         iosArm64(),
@@ -25,7 +26,13 @@ kotlin {
 
     sourceSets {
         commonMain.dependencies {
-            //put your multiplatform dependencies here
+            implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3")
+        }
+        androidMain.dependencies {
+            implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2")
+        }
+        iosMain.dependencies {
+
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)

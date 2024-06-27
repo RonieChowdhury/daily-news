@@ -16,6 +16,16 @@ struct AboutScreen: View {
         NavigationStack {
             AboutListView()
                 .navigationTitle("About Device")
+                .toolbar {
+                    ToolbarItem(placement: .primaryAction) {
+                        Button {
+                            dismiss()
+                        } label: {
+                            Text("Done")
+                                .bold()
+                        }
+                    }
+                }
         }
     }
 }
